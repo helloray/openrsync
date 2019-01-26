@@ -14,19 +14,21 @@ OBJS	 = blocks.o \
 	   server.o \
 	   session.o \
 	   socket.o \
-	   symlinks.o
+	   symlinks.o \
+	   recallocarray.o \
+	   pledge.o
 ALLOBJS	 = $(OBJS) \
 	   main.o
 AFLS	 = afl/test-blk_recv \
 	   afl/test-flist_recv
-CFLAGS	+= -g -W -Wall -Wextra -Wno-unused-parameter
+CFLAGS	+= -g -W -Wall -Wextra -Wno-unused-parameter -D_GNU_SOURCE
 MANDIR	 = $(PREFIX)/man
 BINDIR	 = $(PREFIX)/bin
 
 all: openrsync
 
 openrsync: $(ALLOBJS)
-	$(CC) -o $@ $(ALLOBJS)
+	$(CC) -lbsd -o $@ $(ALLOBJS)
 
 afl: $(AFLS)
 

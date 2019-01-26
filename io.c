@@ -28,6 +28,8 @@
 
 #include "extern.h"
 
+#define INFTIM (-1)
+
 int
 io_read_check(struct sess *sess, int fd)
 {

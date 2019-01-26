@@ -252,6 +252,13 @@ char		 *symlinkat_read(struct sess *, int, const char *);
 int		  sess_stats_send(struct sess *, int);
 int		  sess_stats_recv(struct sess *, int);
 
+#ifdef __linux__
+#include <bsd/stdlib.h>
+#include <bsd/string.h>
+#include "pledge.h"
+#include "recallocarray.h"
+#endif
+
 __END_DECLS
 
 #endif /*!EXTERN_H*/
