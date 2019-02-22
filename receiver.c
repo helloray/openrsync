@@ -16,10 +16,11 @@
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
+#define __USE_GNU
 #include <sys/mman.h>
 #include <sys/queue.h>
 #include <sys/stat.h>
-
+#include <sys/time.h>
 #include <assert.h>
 #include <errno.h>
 #include <fcntl.h>

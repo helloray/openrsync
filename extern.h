@@ -17,6 +17,7 @@
 #ifndef EXTERN_H
 #define EXTERN_H
 
+#define INFTIM (-1)
 /*
  * This is the rsync protocol version that we support.
  */
@@ -382,6 +383,12 @@ void		  idents_free(struct ident *, size_t);
 int		  idents_recv(struct sess *, int, struct ident **, size_t *);
 void		  idents_remap(struct sess *, int, struct ident *, size_t);
 int		  idents_send(struct sess *, int, const struct ident *, size_t);
+#ifdef __linux__
+#include <bsd/stdlib.h>
+#include <bsd/string.h>
+#include "pledge.h"
+#include "recallocarray.h"
+#endif
 
 __END_DECLS
 

@@ -18,21 +18,22 @@ OBJS	 = blocks.o \
 	   session.o \
 	   socket.o \
 	   symlinks.o \
-	   uploader.o
+	   uploader.o \
+	   recallocarray.o \
+	   pledge.o
 ALLOBJS	 = $(OBJS) \
 	   main.o
 AFLS	 = afl/test-blk_recv \
 	   afl/test-flist_recv
+CFLAGS  += -O0 -g -W -Wall -Wextra -Wno-unused-parameter -D_GNU_SOURCE 
 MANDIR	 = $(PREFIX)/man
 BINDIR	 = $(PREFIX)/bin
 
-# The -O0 is to help with debugging coredumps.
-CFLAGS	+= -O0 -g -W -Wall -Wextra -Wno-unused-parameter
 
 all: openrsync
 
 openrsync: $(ALLOBJS)
-	$(CC) -o $@ $(ALLOBJS) -lm
+	$(CC) -o $@ $(ALLOBJS) -lbsd -lm
 
 afl: $(AFLS)
 

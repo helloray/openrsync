@@ -16,12 +16,11 @@
  */
 #include <sys/queue.h>
 #include <sys/stat.h>
-
+#include <bsd/stdlib.h>
 #include <assert.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include "extern.h"
 
 #define	RSYNC_PATH	"rsync"

@@ -33,6 +33,8 @@
  * A non-blocking check to see whether there's POLLIN data in fd.
  * Returns <0 on failure, 0 if there's no data, >0 if there is.
  */
+#define INFTIM (-1)
+
 int
 io_read_check(struct sess *sess, int fd)
 {
